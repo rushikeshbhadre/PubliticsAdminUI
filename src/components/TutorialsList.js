@@ -175,9 +175,21 @@ const TutorialsList = () => {
             </div>
             <div>
               <label>
+                <strong>Date:</strong>
+              </label>{" "}
+              {currentTutorial.date}
+            </div>
+            <div>
+              <label>
                 <strong>Status:</strong>
               </label>{" "}
               {currentTutorial.published ? "Published" : "Pending"}
+            </div>
+            <div>
+              <label>
+                <strong>Description:</strong>
+              </label>{" "}
+              {currentTutorial.newsOwner}
             </div>
 
             <Link

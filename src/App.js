@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import "antd/dist/antd.css";
 
 import AddTutorial from "./components/AddTutorial";
 import Tutorial from "./components/Tutorial";
@@ -13,7 +14,7 @@ function App() {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <a href="/tutorials" className="navbar-brand">
-            bezKoder
+            ThePublitics
           </a>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">

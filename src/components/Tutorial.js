@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from "react";
 import TutorialDataService from "../services/TutorialService";
 
-const Tutorial = props => {
+const Tutorial = (props) => {
   const initialTutorialState = {
     id: null,
     title: "",
     description: "",
-    published: false
+    published: false,
+    img: "",
+    url: "",
+    date: "",
   };
   const [currentTutorial, setCurrentTutorial] = useState(initialTutorialState);
   const [message, setMessage] = useState("");
 
-  const getTutorial = id => {
+  const getTutorial = (id) => {
     TutorialDataService.get(id)
-      .then(response => {
+      .then((response) => {
         setCurrentTutorial(response.data);
         console.log(response.data);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   };
@@ -26,47 +29,51 @@ const Tutorial = props => {
     getTutorial(props.match.params.id);
   }, [props.match.params.id]);
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
     setCurrentTutorial({ ...currentTutorial, [name]: value });
   };
 
-  const updatePublished = status => {
+  const updatePublished = (status) => {
     var data = {
       id: currentTutorial.id,
       title: currentTutorial.title,
       description: currentTutorial.description,
-      published: status
+      published: status,
+      img: currentTutorial.img,
+      url: currentTutorial.url,
+      date: currentTutorial.date,
+      newsOwner: currentTutorial.newsOwner,
     };
 
     TutorialDataService.update(currentTutorial.id, data)
-      .then(response => {
+      .then((response) => {
         setCurrentTutorial({ ...currentTutorial, published: status });
         console.log(response.data);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   };
 
   const updateTutorial = () => {
     TutorialDataService.update(currentTutorial.id, currentTutorial)
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
         setMessage("The tutorial was updated successfully!");
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   };
 
   const deleteTutorial = () => {
     TutorialDataService.remove(currentTutorial.id)
-      .then(response => {
+      .then((response) => {
         console.log(response.data);
         props.history.push("/tutorials");
       })
-      .catch(e => {
+      .catch((e) => {
         console.log(e);
       });
   };
@@ -89,6 +96,28 @@ const Tutorial = props => {
               />
             </div>
             <div className="form-group">
+              <label htmlFor="img">Img</label>
+              <input
+                type="text"
+                className="form-control"
+                id="img"
+                name="img"
+                value={currentTutorial.img}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="url">Url</label>
+              <input
+                type="text"
+                className="form-control"
+                id="url"
+                name="url"
+                value={currentTutorial.url}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
               <label htmlFor="description">Description</label>
               <input
                 type="text"
@@ -96,6 +125,17 @@ const Tutorial = props => {
                 id="description"
                 name="description"
                 value={currentTutorial.description}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="newsOwner">News Owner</label>
+              <input
+                type="text"
+                className="form-control"
+                id="newsOwner"
+                name="newsOwner"
+                value={currentTutorial.newsOwner}
                 onChange={handleInputChange}
               />
             </div>
