@@ -1,5 +1,4 @@
 import http from "../http-common";
-http.set("Access-Control-Allow-Origin", "*");
 
 const getAll = (params) => {
   return http.get("/tutorials", { params });
