@@ -7,6 +7,7 @@ import "antd/dist/antd.css";
 import AddTutorial from "./components/AddTutorial";
 import Tutorial from "./components/Tutorial";
 import TutorialsList from "./components/TutorialsList";
+import Ant from "./components/Ant";
 
 function App() {
   return (
@@ -27,14 +28,20 @@ function App() {
                 Add
               </Link>
             </li>
+            <li className="nav-item">
+              <Link to={"/ant"} className="nav-link">
+                ANT
+              </Link>
+            </li>
           </div>
         </nav>
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path={["/", "/tutorials"]} component={TutorialsList} />
+            <Route exact path={["/tutorials"]} component={TutorialsList} />
             <Route exact path="/add" component={AddTutorial} />
             <Route path="/tutorials/:id" component={Tutorial} />
+            <Route path={["/", "/ant"]} component={Ant} />
           </Switch>
         </div>
       </div>

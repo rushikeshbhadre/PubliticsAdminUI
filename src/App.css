@@ -13,3 +13,31 @@
   max-width: 300px;
   margin: auto;
 }
+
+.ant-list-vertical .ant-list-item-action {
+  margin-top: 0px;
+  margin-left: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.ant-space-item {
+  line-height: 0px;
+}
+
+.ant-list-vertical .ant-list-item-action > li {
+  padding: 0px;
+  line-height: 0px;
+}
+
+.MuiPagination-ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-list-vertical .ant-list-item-extra {
+  margin-left: 40px;
+  background: #80808069;
+}
